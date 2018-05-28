@@ -1,14 +1,20 @@
 ﻿using System.Data.Common;
+using System.Data.Entity;
 using Abp.Zero.EntityFramework;
 using FunBet.Authorization.Roles;
 using FunBet.Authorization.Users;
+using FunBet.Bets;
 using FunBet.MultiTenancy;
+using FunBet.Standings;
 
 namespace FunBet.EntityFramework
 {
     public class FunBetDbContext : AbpZeroDbContext<Tenant, Role, User>
     {
         //TODO: Define an IDbSet for your Entities...
+        public DbSet<Match> Matches { get; set; }
+        public DbSet<Bet> Bets { get; set; }
+        public DbSet<Standing> Standings { get; set; }
 
         /* NOTE: 
          *   Setting "Default" to base class helps us when working migration commands on Package Manager Console.

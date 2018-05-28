@@ -179,6 +179,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bets\Bet.cs" />
+    <Compile Include="Bets\BetManager.cs" />
+    <Compile Include="Bets\IBetManager.cs" />
+    <Compile Include="Bets\IScoreManager.cs" />
+    <Compile Include="Bets\Match.cs" />
+    <Compile Include="Bets\NullScore.cs" />
+    <Compile Include="Bets\Score.cs" />
+    <Compile Include="Bets\ScoreManager.cs" />
+    <Compile Include="CalculationRules\IPointCalculationRule.cs" />
+    <Compile Include="CalculationRules\MatchAnyScoreCalculationRule.cs" />
+    <Compile Include="CalculationRules\MatchExactlyCalculationRule.cs" />
+    <Compile Include="CalculationRules\MatchResultCalculationRule.cs" />
     <Compile Include="FunBetConsts.cs" />
     <Compile Include="FunBetCoreModule.cs" />
     <Compile Include="AppVersionHelper.cs" />
@@ -195,6 +207,8 @@
     <Compile Include="Features\FeatureValueStore.cs" />
     <Compile Include="MultiTenancy\Tenant.cs" />
     <Compile Include="MultiTenancy\TenantManager.cs" />
+    <Compile Include="Parsers\IScoreParser.cs" />
+    <Compile Include="Parsers\ScoreParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Authorization\Roles\Role.cs" />
     <Compile Include="Authorization\Roles\RoleManager.cs" />
@@ -202,6 +216,7 @@
     <Compile Include="Authorization\Users\User.cs" />
     <Compile Include="Authorization\Users\UserManager.cs" />
     <Compile Include="Authorization\Users\UserStore.cs" />
+    <Compile Include="Standings\Standing.cs" />
     <Compile Include="Validation\ValidationHelper.cs" />
   </ItemGroup>
   <ItemGroup>

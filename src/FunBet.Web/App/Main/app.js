@@ -56,6 +56,16 @@
                     templateUrl: '/App/Main/views/home/home.cshtml',
                     menu: 'Home' //Matches to name of 'Home' menu in FunBetNavigationProvider
                 })
+                .state('bets', {
+                    url: '/bets',
+                    templateUrl: '/App/Main/views/bets/index.cshtml',
+                    menu: 'Bets' //Matches to name of 'Home' menu in FunBetNavigationProvider
+                })
+                .state('my-bets', {
+                    url: '/my-bets',
+                    templateUrl: '/App/Main/views/bets/mybets.cshtml',
+                    menu: 'MyBets' //Matches to name of 'Home' menu in FunBetNavigationProvider
+                })
                 .state('about', {
                     url: '/about',
                     templateUrl: '/App/Main/views/about/about.cshtml',
