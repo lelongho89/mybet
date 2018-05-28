@@ -12,12 +12,25 @@
                 });
             }
 
-            
+            function normalizeMatches(items) {
+                return items.forEach(function (obj, index) {
+                    obj.homeScore = '';
+                    obj.awayScore = '';
+                });
+            }
+
+            function canBet(item) {
+                return (item.homeScore || '') !== '' && (item.awayScore || '') !== '';
+            }
 
             vm.bet = function (match) {
-                betService.bet({ matchId: match.id })
-                    .then(function () {
-                    });
+                betService.bet({
+                    matchId: match.id,
+                    predictScore: match.homeScore + '-' + match.awayScore
+                }).then(function () {
+                    abp.notify.success(abp.localization("You've successfull place your bet!"));
+                });
+                    
             }
 
             vm.refresh = function () {

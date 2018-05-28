@@ -27,11 +27,11 @@
                         <tr ng-repeat="item in vm.matches">
                             <td>{{$index + 1}}</td>
                             <td>{{item.homeTeam}} - {{item.awayTeam}}</td>
-                            <td>{{item.startTime}}</td>
+                            <td>{{item.startTime | momentFormat: 'DD/MM/YYYY hh:mm A'}}</td>
                             <td>{{item.stadium}}</td>
-                            <td>{{item.score}}</td>
+                            <td><input matInput  type="number" ng-model="item.homeScore" value="" width="10" /> - <input matInput ng-model="item.awayScore" type="number" value="" width="10" /></td>
                             <td>
-                                <a href="javascript:void(0);" class="waves-effect waves-block" ng-click="vm.bet(item)"><i class="material-icons">touch_app</i>Bet</a>
+                                <button mat-raised-button ng-disabled="!canBet(item)" ng-click="vm.bet(item)"><i class="material-icons">touch_app</i>Bet</button>
                             </td>
                         </tr>
                     </tbody>
