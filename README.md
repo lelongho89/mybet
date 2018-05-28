@@ -1,5 +1,10 @@
-ASP.NET Boilerplate - Module Zero - Startup Template
+Funny bet game for World Cup 2018 - Russia
 ----------------------------------------------------
 
-This project is aimed to be a starter template for ABP and module zero.
-You can create your project on http://www.aspnetboilerplate.com/Templates
+Features:
+- Bets
+- My Bets
+- Standings
+
+Point calculation using rule pattern
+
