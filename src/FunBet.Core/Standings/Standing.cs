@@ -11,8 +11,7 @@ namespace FunBet.Standings
     [Table("AppStandings")]
     public class Standing : Entity
     {
-        public string PredictorUserName { get; set; }
-        public string PredictorName { get; set; }
+        public long PredictorId { get; set; }
         public int Points { get; set; }
     }
 }

@@ -3,7 +3,7 @@ using Abp.Dependency;
 using Abp.Timing;
 using Castle.Core.Logging;
 
-namespace FunBet.Migrator
+namespace FunBet.CalculationScheduler
 {
     public class Log : ITransientDependency
     {
