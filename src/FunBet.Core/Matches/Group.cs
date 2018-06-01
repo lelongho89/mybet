@@ -6,11 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FunBet.Stages
+namespace FunBet.Matches
 {
-    [Table("AppStages")]
-    public class Stage : Entity
+    [Table("AppGroups")]
+    public class Group : Entity
     {
+        public int? TenantId { get; set; }
         public string Name { get; set; }
+        public int? Winner { get; set; }
+        public int? RunnerUp { get; set; }
     }
 }

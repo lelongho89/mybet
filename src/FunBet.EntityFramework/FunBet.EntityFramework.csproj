@@ -227,6 +227,10 @@
     <Compile Include="Migrations\201805280948394_UpdateBetDomainName.Designer.cs">
       <DependentUpon>201805280948394_UpdateBetDomainName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806011516381_UpdateGroupMatchDomain.cs" />
+    <Compile Include="Migrations\201806011516381_UpdateGroupMatchDomain.Designer.cs">
+      <DependentUpon>201806011516381_UpdateGroupMatchDomain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="FunBetDataModule.cs" />
@@ -236,6 +240,8 @@
     <Compile Include="Migrations\SeedData\DefaultTenantCreator.cs" />
     <Compile Include="Migrations\SeedData\HostRoleAndUserCreator.cs" />
     <Compile Include="Migrations\SeedData\InitialHostDbBuilder.cs" />
+    <Compile Include="Migrations\SeedData\GroupsCreator.cs" />
+    <Compile Include="Migrations\SeedData\MatchesCreator.cs" />
     <Compile Include="Migrations\SeedData\TeamsCreator.cs" />
     <Compile Include="Migrations\SeedData\TenantRoleAndUserBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -271,6 +277,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805280948394_UpdateBetDomainName.resx">
       <DependentUpon>201805280948394_UpdateBetDomainName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806011516381_UpdateGroupMatchDomain.resx">
+      <DependentUpon>201806011516381_UpdateGroupMatchDomain.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

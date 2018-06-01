@@ -28,6 +28,11 @@ namespace FunBet.Migrations
                 //Default tenant seed (in host database).
                 new DefaultTenantCreator(context).Create();
                 new TenantRoleAndUserBuilder(context, 1).Create();
+
+                // Seed data
+                //new TeamsCreator(context).Create();
+                //new GroupsCreator(context).Create();
+                //new MatchesCreator(context).Create();
             }
             else
             {

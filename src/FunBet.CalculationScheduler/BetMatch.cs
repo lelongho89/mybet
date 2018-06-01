@@ -11,7 +11,9 @@ namespace FunBet.CalculationScheduler
         public int BetId { get; set; }
         public int MatchId { get; set; }
         public long PredictorId { get; set; }
-        public string PredictScore { get; set; }
-        public string FinalScore { get; set; }
+        public int? HomePredict { get; set; }
+        public int? AwayPredict { get; set; }
+        public int? HomeResult { get; set; }
+        public int? AwayResult { get; set; }
     }
 }

@@ -183,7 +183,6 @@
     <Compile Include="Bets\BetManager.cs" />
     <Compile Include="Bets\IBetManager.cs" />
     <Compile Include="Bets\IScoreManager.cs" />
-    <Compile Include="Bets\Match.cs" />
     <Compile Include="Bets\NullScore.cs" />
     <Compile Include="Bets\Score.cs" />
     <Compile Include="Bets\ScoreManager.cs" />
@@ -205,6 +204,7 @@
     <Compile Include="Configuration\AppSettingProvider.cs" />
     <Compile Include="Editions\EditionManager.cs" />
     <Compile Include="Features\FeatureValueStore.cs" />
+    <Compile Include="Matches\Group.cs" />
     <Compile Include="Matches\Match.cs" />
     <Compile Include="MultiTenancy\Tenant.cs" />
     <Compile Include="MultiTenancy\TenantManager.cs" />
@@ -217,7 +217,6 @@
     <Compile Include="Authorization\Users\User.cs" />
     <Compile Include="Authorization\Users\UserManager.cs" />
     <Compile Include="Authorization\Users\UserStore.cs" />
-    <Compile Include="Stages\Stage.cs" />
     <Compile Include="Standings\Standing.cs" />
     <Compile Include="Teams\Team.cs" />
     <Compile Include="Validation\ValidationHelper.cs" />

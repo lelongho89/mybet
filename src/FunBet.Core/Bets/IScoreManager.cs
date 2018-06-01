@@ -11,6 +11,6 @@ namespace FunBet.Bets
     public interface IScoreManager : ITransientDependency
     {
         void AddRule(IPointCalculationRule rule);
-        int CalculateScore(string predictScoreValue, string resultScoreValue);
+        int CalculateScore(Score predictScore, Score resultScore);
     }
 }

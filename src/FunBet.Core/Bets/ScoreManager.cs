@@ -29,14 +29,11 @@ namespace FunBet.Bets
             this._rules.Add(rule);
         }
 
-        public int CalculateScore(string predictScoreValue, string resultScoreValue)
+        public int CalculateScore(Score predictScore, Score resultScore)
         {
-            var predictScore = _scoreParser.Parse(predictScoreValue);
-            var resultScore = _scoreParser.Parse(resultScoreValue);
-
             var totalPoint = 0;
 
-            if (predictScore is NullScore) return 0;
+            if (predictScore.IsInvalidScore()) return 0;
 
             foreach (var rule in _rules)
             {

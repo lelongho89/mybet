@@ -9,6 +9,7 @@ using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Timing;
 using FunBet.Bets.Dto;
+using FunBet.Matches;
 
 namespace FunBet.Bets
 {
@@ -39,7 +40,7 @@ namespace FunBet.Bets
 
         public ListResultDto<MatchDto> GetAllMatches(GetAllMatchesInput input)
         {
-            var data = this._matchRepository.GetAll().OrderBy(x => x.StartTime).ThenBy(x => x.Group).ToList();
+            var data = this._matchRepository.GetAll().OrderBy(x => x.Date).ThenBy(x => x.Group).ToList();
             return new ListResultDto<MatchDto>(data.MapTo<List<MatchDto>>());
         }
     }

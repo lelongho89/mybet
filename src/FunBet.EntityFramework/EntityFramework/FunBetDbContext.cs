@@ -4,6 +4,7 @@ using Abp.Zero.EntityFramework;
 using FunBet.Authorization.Roles;
 using FunBet.Authorization.Users;
 using FunBet.Bets;
+using FunBet.Matches;
 using FunBet.MultiTenancy;
 using FunBet.Standings;
 using FunBet.Teams;
@@ -17,6 +18,8 @@ namespace FunBet.EntityFramework
         public DbSet<Bet> Bets { get; set; }
         public DbSet<Standing> Standings { get; set; }
         public DbSet<Team> Teams { get; set; }
+        public DbSet<Group> Groups { get; set; }
+
 
 
         /* NOTE: 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Abp.Domain.Values;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FunBet.Bets
 {
-    public class Score
+    public class Score : ValueObject<Score>
     {
         public int HomeScore { get; set; }
         public int AwayScore { get; set; }
@@ -19,6 +20,11 @@ namespace FunBet.Bets
         {
             this.HomeScore = home;
             this.AwayScore = away;
+        }
+
+        public bool IsInvalidScore()
+        {
+            return (HomeScore == -1 || AwayScore == -1);
         }
     }
 }

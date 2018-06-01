@@ -2,6 +2,7 @@
 using Abp.Domain.Repositories;
 using FunBet.Bets;
 using FunBet.CalculationScheduler;
+using FunBet.Matches;
 using FunBet.Standings;
 using System;
 using System.Collections.Generic;
@@ -48,9 +49,11 @@ namespace FunBet.CalculationScheduler
                                         {
                                             BetId = bet.Id,
                                             PredictorId = bet.PredictorId,
-                                            PredictScore =bet.PredictScore,
+                                            HomePredict = bet.HomePredict,
+                                            AwayPredict = bet.AwayPredict,
                                             MatchId = match.Id,
-                                            FinalScore = match.FinalScore
+                                            HomeResult = match.HomeResult,
+                                            AwayResult = match.AwayResult
                                         };
 
                 var betsByPredictor = finishedMatchBets.GroupBy(x => x.PredictorId);
@@ -64,7 +67,7 @@ namespace FunBet.CalculationScheduler
 
                     foreach (BetMatch bet in bbp.ToList())
                     {
-                        addingPoints += _scoreManager.CalculateScore(bet.PredictScore, bet.FinalScore);
+                        addingPoints += _scoreManager.CalculateScore(new Score(bet.HomePredict ?? -1, bet.AwayPredict ?? -1), new Score(bet.HomeResult ?? -1, bet.AwayResult ?? -1));
 
                         _betRepository.Update(bet.BetId, (b) => b.IsProcessed = true);
                     }

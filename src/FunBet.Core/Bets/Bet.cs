@@ -1,5 +1,6 @@
 ﻿using Abp.Domain.Entities.Auditing;
 using FunBet.Authorization.Users;
+using FunBet.Matches;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -22,7 +23,8 @@ namespace FunBet.Bets
         [ForeignKey("PredictorId")]
         public virtual User Predictor { get; set; }
 
-        public string PredictScore { get; set; }
+        public int? HomePredict { get; set; }
+        public int? AwayPredict { get; set; }
 
         public DateTime PredictTime { get; set; }
 
