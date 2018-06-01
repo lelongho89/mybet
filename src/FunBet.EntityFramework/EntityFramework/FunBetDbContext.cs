@@ -6,6 +6,7 @@ using FunBet.Authorization.Users;
 using FunBet.Bets;
 using FunBet.MultiTenancy;
 using FunBet.Standings;
+using FunBet.Teams;
 
 namespace FunBet.EntityFramework
 {
@@ -15,6 +16,8 @@ namespace FunBet.EntityFramework
         public DbSet<Match> Matches { get; set; }
         public DbSet<Bet> Bets { get; set; }
         public DbSet<Standing> Standings { get; set; }
+        public DbSet<Team> Teams { get; set; }
+
 
         /* NOTE: 
          *   Setting "Default" to base class helps us when working migration commands on Package Manager Console.
