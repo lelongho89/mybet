@@ -44,6 +44,39 @@ namespace FunBet.Matches
         public bool Finished { get; set; }
         public int MatchDay { get; set; }
 
+        public Match()
+        {
+        }
+
+        public Match(int name, string type, int homeTeam, int awayTeam, DateTime date, bool finished, int matchDay)
+        {
+            Name = name;
+            Type = type;
+            HomeTeam = homeTeam;
+            AwayTeam = awayTeam;
+            Date = date;
+            Finished = finished;
+            MatchDay = matchDay;
+        }
+
+        public Match(int name, int groupId, string type, int homeTeam, int awayTeam, int? homeResult, int? awayResult, int? homePenalty, int? awayPenalty, int? winner, DateTime date, string stadium, bool finished, int matchDay)
+        {
+            Name = name;
+            GroupId = groupId;
+            Type = type;
+            HomeTeam = homeTeam;
+            AwayTeam = awayTeam;
+            HomeResult = homeResult;
+            AwayResult = awayResult;
+            HomePenalty = homePenalty;
+            AwayPenalty = awayPenalty;
+            Winner = winner;
+            Date = date;
+            Stadium = stadium;
+            Finished = finished;
+            MatchDay = matchDay;
+        }
+
         public bool IsOKToBet()
         {
             // Check if a valid bet
