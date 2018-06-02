@@ -30,9 +30,9 @@ namespace FunBet.Migrations
                 new TenantRoleAndUserBuilder(context, 1).Create();
 
                 // Seed data
-                //new TeamsCreator(context).Create();
-                //new GroupsCreator(context).Create();
-                //new MatchesCreator(context).Create();
+                new TeamsCreator(context).Create();
+                new GroupsCreator(context).Create();
+                new MatchesCreator(context).Create();
             }
             else
             {

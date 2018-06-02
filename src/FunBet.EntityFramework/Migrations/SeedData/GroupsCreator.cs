@@ -20,10 +20,23 @@ namespace FunBet.Migrations.SeedData
 
         static GroupsCreator()
         {
-            //InitialTeams = new List<Team>
-            //{
-            //    new Team(null, "Russia", "RUS", "https://upload.wikimedia.org/wikipedia/en/thumb/f/f3/Flag_of_Russia.svg/900px-Flag_of_Russia.png", "flag-ru", "🇷🇺"),
-            //};
+            InitialGroups = new List<Group>
+            {
+                new Group("Group A"),
+                new Group("Group B"),
+                new Group("Group C"),
+                new Group("Group D"),
+                new Group("Group E"),
+                new Group("Group F"),
+                new Group("Group G"),
+                new Group("Group H"),
+                new Group("Round of 16"),
+                new Group("Quater-finals"),
+                new Group("Semi-finals"),
+                new Group("Third-place"),
+                new Group("Final")
+            };
+
         }
 
         public GroupsCreator(FunBetDbContext context)

@@ -20,10 +20,7 @@ namespace FunBet.Migrations.SeedData
 
         static MatchesCreator()
         {
-            //InitialTeams = new List<Team>
-            //{
-            //    new Team(null, "Russia", "RUS", "https://upload.wikimedia.org/wikipedia/en/thumb/f/f3/Flag_of_Russia.svg/900px-Flag_of_Russia.png", "flag-ru", "🇷🇺"),
-            //};
+            InitialMatches = new List<Match>();
         }
 
         public MatchesCreator(FunBetDbContext context)
@@ -33,7 +30,14 @@ namespace FunBet.Migrations.SeedData
 
         public void Create()
         {
+            InitMatchesData();
             CreateMatches();
+        }
+
+        private void InitMatchesData()
+        {
+            var groupA = _context.Groups.FirstOrDefault(x => x.Name == "Group A");
+            //InitialMatches.Add
         }
 
         private void CreateMatches()

@@ -15,5 +15,21 @@ namespace FunBet.Matches
         public string Name { get; set; }
         public int? Winner { get; set; }
         public int? RunnerUp { get; set; }
+
+        public Group()
+        {
+        }
+
+        public Group(string name)
+        {
+            Name = name;
+        }
+
+        public Group(string name, int? winner, int? runnerUp)
+        {
+            Name = name;
+            Winner = winner;
+            RunnerUp = runnerUp;
+        }
     }
 }

@@ -15,8 +15,8 @@ namespace FunBet.Teams
         public const int MaxNameLength = 50;
         public const int MaxFlagLength = 255;
         public const int MaxFifaCodeLength = 3;
-        public const int MaxEmojiLength = 7;
-        public const int MaxEmojiStringLength = 2;
+        public const int MaxEmojiLength = 20;
+        public const int MaxEmojiStringLength = 20;
 
         public virtual int? TenantId { get; set; }
 
@@ -40,12 +40,12 @@ namespace FunBet.Teams
         public Team()
         {
         }
-        public Team(int? tenantId, string name, string flag, string fifaCode, string emoji, string emojiString)
+        public Team(string name, string fifaCode, string flag, string emoji, string emojiString)
         {
-            this.TenantId = tenantId;
             this.Name = name;
             this.Flag = flag;
             this.Emoji = emoji;
+            this.FifaCode = fifaCode;
             this.EmojiString = emojiString;
         }
     }

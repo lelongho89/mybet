@@ -231,6 +231,18 @@
     <Compile Include="Migrations\201806011516381_UpdateGroupMatchDomain.Designer.cs">
       <DependentUpon>201806011516381_UpdateGroupMatchDomain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806021419228_ChangeEmojiLength.cs" />
+    <Compile Include="Migrations\201806021419228_ChangeEmojiLength.Designer.cs">
+      <DependentUpon>201806021419228_ChangeEmojiLength.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806021432371_ChangeEmojiMaxLength.cs" />
+    <Compile Include="Migrations\201806021432371_ChangeEmojiMaxLength.Designer.cs">
+      <DependentUpon>201806021432371_ChangeEmojiMaxLength.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806021435435_ChangeEmojiStringMaxLength.cs" />
+    <Compile Include="Migrations\201806021435435_ChangeEmojiStringMaxLength.Designer.cs">
+      <DependentUpon>201806021435435_ChangeEmojiStringMaxLength.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="FunBetDataModule.cs" />
@@ -280,6 +292,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806011516381_UpdateGroupMatchDomain.resx">
       <DependentUpon>201806011516381_UpdateGroupMatchDomain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806021419228_ChangeEmojiLength.resx">
+      <DependentUpon>201806021419228_ChangeEmojiLength.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806021432371_ChangeEmojiMaxLength.resx">
+      <DependentUpon>201806021432371_ChangeEmojiMaxLength.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806021435435_ChangeEmojiStringMaxLength.resx">
+      <DependentUpon>201806021435435_ChangeEmojiStringMaxLength.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
