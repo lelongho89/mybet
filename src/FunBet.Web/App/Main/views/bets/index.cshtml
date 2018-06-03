@@ -13,20 +13,10 @@
             <div class="body table-responsive">
 
                 <table class="table table-hover table-striped">
-                    <thead>
-                        <tr>
-                            <th> # </th>
-                            <th>@L("Match")</th>
-                            <th>@L("Time")</th>
-                            <th>@L("Stadium")</th>
-                            <th>@L("Score")</th>
-                            <th>@L("Actions")</th>
-                        </tr>
-                    </thead>
                     <tbody>
                         <tr ng-repeat="item in vm.matches">
                             <td>{{$index + 1}}</td>
-                            <td>{{item.homeTeam}} - {{item.awayTeam}}</td>
+                            <td><i ng-class="flag-icon flag-icon-{{item.homeTeamIso2}}"></i>{{item.homeTeamName}} - {{item.awayTeamName}} <i ng-class="iconClasses(item.awayTeamIso2)"></i></td>
                             <td>{{item.startTime | momentFormat: 'DD/MM/YYYY hh:mm A'}}</td>
                             <td>{{item.stadium}}</td>
                             <td><input matInput  type="number" ng-model="item.homeScore" value="" width="10" /> - <input matInput ng-model="item.awayScore" type="number" value="" width="10" /></td>

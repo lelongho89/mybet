@@ -61,10 +61,10 @@
                     templateUrl: '/App/Main/views/bets/index.cshtml',
                     menu: 'Bets' //Matches to name of 'Home' menu in FunBetNavigationProvider
                 })
-                .state('my-bets', {
-                    url: '/my-bets',
-                    templateUrl: '/App/Main/views/bets/mybets.cshtml',
-                    menu: 'MyBets' //Matches to name of 'Home' menu in FunBetNavigationProvider
+                .state('standings', {
+                    url: '/standings',
+                    templateUrl: '/App/Main/views/standings/index.cshtml',
+                    menu: 'Standings' //Matches to name of 'Home' menu in FunBetNavigationProvider
                 })
                 .state('about', {
                     url: '/about',

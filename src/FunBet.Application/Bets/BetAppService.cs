@@ -37,11 +37,5 @@ namespace FunBet.Bets
 
             _betManager.BetOnMatch(betModel, match);
         }
-
-        public ListResultDto<MatchDto> GetAllMatches(GetAllMatchesInput input)
-        {
-            var data = this._matchRepository.GetAll().OrderBy(x => x.Date).ThenBy(x => x.Group).ToList();
-            return new ListResultDto<MatchDto>(data.MapTo<List<MatchDto>>());
-        }
     }
 }

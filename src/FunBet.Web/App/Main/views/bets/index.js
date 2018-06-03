@@ -1,32 +1,30 @@
 ﻿(function () {
     angular.module('app').controller('app.views.bets.index', [
-        '$scope', '$uibModal', 'abp.services.app.bet',
-        function ($scope, $uibModal, betService) {
+        '$scope', '$uibModal', 'abp.services.app.bet', 'abp.services.app.match',
+        function ($scope, $uibModal, betService, matchService) {
             var vm = this;
 
             vm.matches = [];
 
             function getMatches() {
-                betService.getAllMatches({}).then(function (result) {
+                matchService.getAll({}).then(function (result) {
                     vm.matches = result.data.items;
                 });
             }
 
-            function normalizeMatches(items) {
-                return items.forEach(function (obj, index) {
-                    obj.homeScore = '';
-                    obj.awayScore = '';
-                });
+            function canBet(item) {
+                return (item.homeResult || '') !== '' && (item.awayResult || '') !== '';
             }
 
-            function canBet(item) {
-                return (item.homeScore || '') !== '' && (item.awayScore || '') !== '';
+            function iconClasses(teamIso2) {
+                return "flag-icon flag-icon-" + teamIso2;
             }
 
             vm.bet = function (match) {
                 betService.bet({
                     matchId: match.id,
-                    predictScore: match.homeScore + '-' + match.awayScore
+                    homePredict: match.homeResult,
+                    awayPredict: match.awayResult
                 }).then(function () {
                     abp.notify.success(abp.localization("You've successfull place your bet!"));
                 });

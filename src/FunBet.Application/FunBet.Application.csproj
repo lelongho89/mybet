@@ -187,8 +187,11 @@
   <ItemGroup>
     <Compile Include="Bets\BetAppService.cs" />
     <Compile Include="Bets\Dto\BetInput.cs" />
-    <Compile Include="Bets\Dto\GetAllMatchesInput.cs" />
-    <Compile Include="Bets\Dto\MatchDto.cs" />
+    <Compile Include="CustomMappings.cs" />
+    <Compile Include="Matches\Dto\MatchDisplayType.cs" />
+    <Compile Include="Matches\MatchAppService.cs" />
+    <Compile Include="Matches\Dto\GetAllInput.cs" />
+    <Compile Include="Matches\Dto\MatchDto.cs" />
     <Compile Include="Bets\IBetAppService.cs" />
     <Compile Include="FunBetApplicationModule.cs" />
     <Compile Include="FunBetAppServiceBase.cs" />
@@ -204,6 +207,7 @@
     <Compile Include="Configuration\IConfigurationAppService.cs" />
     <Compile Include="Configuration\Ui\UiThemeInfo.cs" />
     <Compile Include="Configuration\Ui\UiThemes.cs" />
+    <Compile Include="Matches\IMatchAppService.cs" />
     <Compile Include="MultiTenancy\Dto\CreateTenantDto.cs" />
     <Compile Include="MultiTenancy\Dto\EditTenantDto.cs" />
     <Compile Include="MultiTenancy\Dto\TenantDto.cs" />

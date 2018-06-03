@@ -54,6 +54,7 @@ namespace FunBet.Web
             //~/Bundles/App/vendor/css
             bundles.Add(
                 new StyleBundle("~/Bundles/App/vendor/css")
+                    .Include("~/css/flag-icon-css/css/flag-icon.css", new CssRewriteUrlTransform())
                     .Include("~/fonts/roboto/roboto.css", new CssRewriteUrlTransform())
                     .Include("~/fonts/material-icons/materialicons.css", new CssRewriteUrlTransform())
                     .Include("~/lib/bootstrap/dist/css/bootstrap.css", new CssRewriteUrlTransform())
