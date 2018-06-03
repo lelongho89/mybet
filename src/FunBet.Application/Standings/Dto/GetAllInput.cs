@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FunBet
+namespace FunBet.Standings.Dto
 {
-    public class CustomMappings
+    public class GetAllInput
     {
     }
 }

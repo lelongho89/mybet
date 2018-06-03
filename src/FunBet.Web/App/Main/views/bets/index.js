@@ -16,10 +16,6 @@
                 return (item.homeResult || '') !== '' && (item.awayResult || '') !== '';
             }
 
-            function iconClasses(teamIso2) {
-                return "flag-icon flag-icon-" + teamIso2;
-            }
-
             vm.bet = function (match) {
                 betService.bet({
                     matchId: match.id,

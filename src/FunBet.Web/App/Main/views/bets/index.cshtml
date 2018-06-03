@@ -5,23 +5,34 @@
                 <h2>
                     @L("Bets")
                 </h2>
-                <ul class="header-dropdown m-r--5">
-                    <i class="fa fa-spin fa-spinner" ng-if="isTableLoading"></i>
-                    <a href="javascript:void(0);" class="waves-effect <waves-block></waves-block>" ng-click="vm.refresh();"><i class="material-icons">refresh</i> Refresh</a>
-                </ul>
+                <button type="button" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right" ng-click="vm.refresh();"><i class="material-icons">refresh</i></button>
             </div>
             <div class="body table-responsive">
-
-                <table class="table table-hover table-striped">
+                <table class="table table-hover table-striped table-match">
                     <tbody>
-                        <tr ng-repeat="item in vm.matches">
-                            <td>{{$index + 1}}</td>
-                            <td><i ng-class="flag-icon flag-icon-{{item.homeTeamIso2}}"></i>{{item.homeTeamName}} - {{item.awayTeamName}} <i ng-class="iconClasses(item.awayTeamIso2)"></i></td>
-                            <td>{{item.startTime | momentFormat: 'DD/MM/YYYY hh:mm A'}}</td>
-                            <td>{{item.stadium}}</td>
-                            <td><input matInput  type="number" ng-model="item.homeScore" value="" width="10" /> - <input matInput ng-model="item.awayScore" type="number" value="" width="10" /></td>
+                        <tr ng-repeat="item in vm.matches" id="match_{{item.id}}">
+                            <td width="15%" class="match-date">{{item.date | momentFormat: 'DD/MM/YYYY hh:mm A'}}</td>
+                            <td class="text-right match-hometeam">
+                                <span data-id="team-{{item.homeTeam}}" class="team-name">
+                                    <i class="flag-icon flag-icon-{{item.homeTeamIso2}}"></i>
+                                    {{item.homeTeamName}}
+                                </span>
+                                <label class="match-label">
+                                    <input id="match-{{item.id}}-result-home" ng-model="item.homeResult" data-type="home" type="text" class="match-result">
+                                </label>
+                            </td>
+                            <td class="text-center match-spacer">Match {{item.id}}</td>
                             <td>
-                                <button mat-raised-button ng-disabled="!canBet(item)" ng-click="vm.bet(item)"><i class="material-icons">touch_app</i>Bet</button>
+                                <label class="match-label">
+                                    <input id="match-{{item.id}}-result-away" ng-model="item.awayResult" data-type="away" type="text" class="match-result">
+                                </label>
+                                <span data-id="team-{{item.awayTeam}}" class="team-name">
+                                    <i class="flag-icon flag-icon-{{item.awayTeamIso2}}"></i>
+                                    {{item.awayTeamName}}
+                                </span>
+                            </td>
+                            <td>
+                                <button mat-raised-button ng-click="vm.bet(item)"><i class="material-icons">touch_app</i>Bet</button>
                             </td>
                         </tr>
                     </tbody>
