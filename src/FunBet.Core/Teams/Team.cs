@@ -13,6 +13,7 @@ namespace FunBet.Teams
     public class Team : Entity
     {
         public const int MaxNameLength = 50;
+        public const int MaxIso2Length = 6;
         public const int MaxFlagLength = 255;
         public const int MaxFifaCodeLength = 3;
         public const int MaxEmojiLength = 20;
@@ -22,6 +23,12 @@ namespace FunBet.Teams
 
         [MaxLength(MaxNameLength)]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Use to display flag icon
+        /// </summary>
+        [MaxLength(MaxIso2Length)]
+        public string Iso2 { get; set; }
         /// <summary>
         /// Url of flag.
         /// </summary>
@@ -40,10 +47,11 @@ namespace FunBet.Teams
         public Team()
         {
         }
-        public Team(string name, string fifaCode, string flag, string emoji, string emojiString)
+        public Team(string name, string fifaCode, string iso2, string flag, string emoji, string emojiString)
         {
             this.Name = name;
             this.Flag = flag;
+            this.Iso2 = iso2;
             this.Emoji = emoji;
             this.FifaCode = fifaCode;
             this.EmojiString = emojiString;
