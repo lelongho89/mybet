@@ -8,6 +8,8 @@ using Abp.Modules;
 using FunBet.Authorization.Roles;
 using FunBet.Authorization.Users;
 using FunBet.Roles.Dto;
+using FunBet.Standings;
+using FunBet.Standings.Dto;
 using FunBet.Users.Dto;
 
 namespace FunBet
@@ -38,6 +40,8 @@ namespace FunBet
 
                 cfg.CreateMap<CreateUserDto, User>();
                 cfg.CreateMap<CreateUserDto, User>().ForMember(x => x.Roles, opt => opt.Ignore());
+
+                cfg.CreateMap<Standing, StandingDto>().ForMember(x => x.Name, opt => opt.MapFrom(s => s.Predictor.Name));
             });
         }
     }

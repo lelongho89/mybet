@@ -187,7 +187,6 @@
   <ItemGroup>
     <Compile Include="Bets\BetAppService.cs" />
     <Compile Include="Bets\Dto\BetInput.cs" />
-    <Compile Include="CustomMappings.cs" />
     <Compile Include="Matches\Dto\MatchDisplayType.cs" />
     <Compile Include="Matches\MatchAppService.cs" />
     <Compile Include="Matches\Dto\GetAllInput.cs" />
@@ -218,6 +217,8 @@
     <Compile Include="Roles\Dto\PermissionDto.cs" />
     <Compile Include="Roles\Dto\RoleDto.cs" />
     <Compile Include="Roles\IRoleAppService.cs" />
+    <Compile Include="Standings\Dto\GetAllInput.cs" />
+    <Compile Include="Standings\Dto\StandingDto.cs" />
     <Compile Include="Standings\IStandingAppService.cs" />
     <Compile Include="Standings\StandingAppService.cs" />
     <Compile Include="Users\Dto\CreateUserDto.cs" />
@@ -242,9 +243,7 @@
       <Name>FunBet.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Standings\Dto\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

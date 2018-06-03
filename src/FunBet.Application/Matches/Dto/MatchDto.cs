@@ -22,10 +22,10 @@ namespace FunBet.Matches.Dto
         public string HomeTeamIso2 { get; set; }
         public string AwayTeamName { get; set; }
         public string AwayTeamIso2 { get; set; }
-        public int HomeResult { get; set; }
-        public int AwayResult { get; set; }
-        public int HomePenalty { get; set; }
-        public int AwayPenalty { get; set; }
+        public int? HomeResult { get; set; }
+        public int? AwayResult { get; set; }
+        public int? HomePenalty { get; set; }
+        public int? AwayPenalty { get; set; }
         public bool Finished { get; set; }
         public bool HasBet { get; set; }
 

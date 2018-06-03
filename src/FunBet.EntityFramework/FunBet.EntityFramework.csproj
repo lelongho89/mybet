@@ -247,6 +247,10 @@
     <Compile Include="Migrations\201806030026022_AddIso2ToTeam.Designer.cs">
       <DependentUpon>201806030026022_AddIso2ToTeam.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806031417197_SomeChangesDomain.cs" />
+    <Compile Include="Migrations\201806031417197_SomeChangesDomain.Designer.cs">
+      <DependentUpon>201806031417197_SomeChangesDomain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="FunBetDataModule.cs" />
@@ -308,6 +312,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806030026022_AddIso2ToTeam.resx">
       <DependentUpon>201806030026022_AddIso2ToTeam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806031417197_SomeChangesDomain.resx">
+      <DependentUpon>201806031417197_SomeChangesDomain.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
