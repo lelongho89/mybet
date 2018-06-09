@@ -1,37 +1,56 @@
 ﻿(function () {
     angular.module('app').controller('app.views.bets.index', [
-        '$scope', '$uibModal', 'abp.services.app.bet', 'abp.services.app.match',
-        function ($scope, $uibModal, betService, matchService) {
+        '$scope', '$uibModal', 'abp.services.app.bet',
+        function ($scope, $uibModal, betService) {
             var vm = this;
 
-            vm.matches = [];
+            vm.betMatches = [];
 
-            function getMatches() {
-                matchService.getAll({}).then(function (result) {
-                    vm.matches = result.data.items;
+            function getBetMatches() {
+                betService.getMatchesToBet({}).then(function (result) {
+                    vm.betMatches = result.data.items;
                 });
             }
 
             function canBet(item) {
-                return (item.homeResult || '') !== '' && (item.awayResult || '') !== '';
+                if (item.finished) {
+                    abp.notify.error(App.localize("The match has been finished!"));
+                    return false;
+                }
+                // Not allowed to bet  after 75th minute.
+                if (abp.clock.now() > moment(item.date).add(90, 'm').toDate()) {
+                    abp.notify.error(App.localize("It''s too late to bet!"));
+                    return false;
+                }
+
+                if (item.homePredict == null || item.awayPredict == null) {
+                    abp.notify.error(App.localize("Please enter valid score!"));
+                    return false;
+                }
+
+                return true;
             }
 
             vm.bet = function (match) {
+                if (!canBet(match)) {
+                    return false;
+                }
+
                 betService.bet({
                     matchId: match.id,
-                    homePredict: match.homeResult,
-                    awayPredict: match.awayResult
+                    homePredict: match.homePredict,
+                    awayPredict: match.awayPredict
                 }).then(function () {
-                    abp.notify.success(abp.localization("You've successfull place your bet!"));
+                    abp.notify.success(App.localize("You've successfull place your bet!"));
                 });
                     
             }
 
             vm.refresh = function () {
-                getMatches();
+                getBetMatches();
             };
 
-            getMatches();
+            getBetMatches();
         }
     ]);
 })();

@@ -432,6 +432,10 @@
       <DependentUpon>main.css</DependentUpon>
     </Content>
     <Content Include="App\Main\services\appSession.js" />
+    <Content Include="App\Main\views\directives\matches.js" />
+    <Content Include="App\Main\views\directives\numbersOnly.js" />
+    <Content Include="App\Main\views\matches\index.css" />
+    <Content Include="App\Main\views\matches\index.js" />
     <Content Include="App\Main\views\standings\index.css" />
     <Content Include="App\Main\views\standings\index.js" />
     <Content Include="App\Main\views\bets\index.css" />
@@ -3199,6 +3203,8 @@
     <Content Include="App\Main\views\bets\index.cshtml" />
     <Content Include="App_Data\data.json" />
     <Content Include="App\Main\views\standings\index.cshtml" />
+    <Content Include="App\Main\views\matches\index.cshtml" />
+    <Content Include="App\Main\views\directives\matches.cshtml" />
     <None Include="bundleconfig.json" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">

@@ -10,6 +10,7 @@ using Abp.Domain.Repositories;
 using Abp.Timing;
 using FunBet.Bets.Dto;
 using FunBet.Matches;
+using FunBet.Teams;
 
 namespace FunBet.Bets
 {
@@ -19,13 +20,52 @@ namespace FunBet.Bets
         private readonly IBetManager _betManager;
         private readonly IRepository<Match> _matchRepository;
         private readonly IRepository<Bet> _betRepository;
+        private readonly IRepository<Team> _teamRepository;
 
         public BetAppService(IBetManager betManager, IRepository<Match> matchRepository,
+            IRepository<Team> teamRepository,
             IRepository<Bet> betRepository)
         {
             this._betManager = betManager;
+            this._teamRepository = teamRepository;
             this._matchRepository = matchRepository;
             this._betRepository = betRepository;
+        }
+
+        public ListResultDto<BetMatchDto> GetMatchesToBet(GetMatchesToBetInput input)
+        {
+            var teams = this._teamRepository.GetAllList();
+            var matches = this._matchRepository.GetAll()
+                                            .OrderBy(x => x.Date)
+                                            .MapTo<List<BetMatchDto>>();
+                          
+            var bets = this._betRepository.GetAll().Where(x => x.PredictorId == AbpSession.UserId.Value).ToList();
+
+
+            // All matches
+            matches.ForEach(x =>
+            {
+                var homeTeam = teams.FirstOrDefault(t => t.Id == x.HomeTeam);
+                x.HomeTeamName = homeTeam.Name;
+                x.HomeTeamIso2 = homeTeam.Iso2;
+
+                var awayTeam = teams.FirstOrDefault(t => t.Id == x.AwayTeam);
+                x.AwayTeamName = awayTeam.Name;
+                x.AwayTeamIso2 = awayTeam.Iso2;
+
+                var bet = bets.FirstOrDefault(b => b.MatchId == x.Id);
+                if (bet != null)
+                {
+                    x.HomePredict = bet.HomePredict;
+                    x.AwayPredict = bet.AwayPredict;
+                    x.BetId = bet.Id;
+                }
+            });
+
+            return new ListResultDto<BetMatchDto>()
+            {
+                Items = matches
+            };
         }
 
         public void Bet(BetInput input)

@@ -12,6 +12,7 @@ namespace FunBet.Bets.Dto
     {
         public int? Id { get; set; }
         public int MatchId { get; set; }
-        public string PredictScore { get; set; }
+        public int HomePredict { get; set; }
+        public int AwayPredict { get; set; }
     }
 }

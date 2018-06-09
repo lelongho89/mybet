@@ -21,22 +21,25 @@ namespace FunBet.Matches
     {
         private readonly IRepository<Match> _matchRepository;
         private readonly IRepository<Team> _teamRepository;
+        private readonly IRepository<Group> _groupRepository;
 
         public MatchAppService(IRepository<Match> matchRepository,
-            IRepository<Team> teamRepository)
+            IRepository<Team> teamRepository,
+            IRepository<Group> groupRepository)
         {
             this._matchRepository = matchRepository;
             this._teamRepository = teamRepository;
+            this._groupRepository = groupRepository;
         }
 
-        public ListResultDto<MatchDto> GetAll(GetAllInput input)
+        public GetAllOutput GetAll(GetAllInput input)
         {
             var teams = this._teamRepository.GetAllList();
-            var data = this._matchRepository.GetAll()
+            var matches = this._matchRepository.GetAll()
                                             .OrderBy(x => x.Date)
-                                            .ToList()
                                             .MapTo<List<MatchDto>>();
-            data.ForEach(x =>
+            // All matches
+            matches.ForEach(x =>
             {
                 var homeTeam = teams.FirstOrDefault(t => t.Id == x.HomeTeam);
                 x.HomeTeamName = homeTeam.Name;
@@ -47,7 +50,21 @@ namespace FunBet.Matches
                 x.AwayTeamIso2 = awayTeam.Iso2;
             });
 
-            return new ListResultDto<MatchDto>(data);
+
+            // Matches by group
+            var groups = this._groupRepository.GetAllList().MapTo<List<GroupDto>>();
+
+            groups.ForEach(g =>
+            {
+                g.Matches = matches.Where(m => m.GroupId == g.Id).ToList();
+            });
+
+
+            return new GetAllOutput()
+            {
+                Matches = matches,
+                Groups = groups
+            };
         }
     }
 }

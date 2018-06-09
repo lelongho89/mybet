@@ -1,0 +1,32 @@
+﻿<div class="row clearfix" ng-controller="app.views.matches.index as vm">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card main-content">
+            <div class="header">
+                <h2>
+                    @L("Matches")
+                </h2>
+                Display: <a ng-show="vm.currentViewType == 'Group'" href="" ng-click="vm.view('List');">List</a><span ng-show="vm.currentViewType == 'List'">List</span> 
+                / <a ng-show="vm.currentViewType == 'List'" href="" ng-click="vm.view('Group');">Group</a><span ng-show="vm.currentViewType == 'Group'">Group</span>
+            </div>
+            <div class="body table-responsive">
+                <div ng-show="vm.currentViewType == 'List'">
+                    <matches matches="vm.data.matches"></matches>
+                </div>
+                <div ng-show="vm.currentViewType == 'Group'">
+                    <div class="row">
+                        <article class="col-md-6" ng-repeat="group in vm.data.groups">
+                            <div class="card card--group">
+                                <div class="header">
+                                    {{group.name}}
+                                </div>
+                                <div class="body">
+                                    <matches matches="group.matches"></matches>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

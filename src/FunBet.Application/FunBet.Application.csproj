@@ -187,6 +187,10 @@
   <ItemGroup>
     <Compile Include="Bets\BetAppService.cs" />
     <Compile Include="Bets\Dto\BetInput.cs" />
+    <Compile Include="Bets\Dto\BetMatchDto.cs" />
+    <Compile Include="Bets\Dto\GetMatchesToBetInput.cs" />
+    <Compile Include="Matches\Dto\GetAllOutput.cs" />
+    <Compile Include="Matches\Dto\GroupDto.cs" />
     <Compile Include="Matches\Dto\MatchDisplayType.cs" />
     <Compile Include="Matches\MatchAppService.cs" />
     <Compile Include="Matches\Dto\GetAllInput.cs" />

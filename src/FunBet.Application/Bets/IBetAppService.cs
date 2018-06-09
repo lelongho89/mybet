@@ -12,5 +12,6 @@ namespace FunBet.Bets
     public interface IBetAppService : IApplicationService
     {
         void Bet(BetInput input);
+        ListResultDto<BetMatchDto> GetMatchesToBet(GetMatchesToBetInput input);
     }
 }

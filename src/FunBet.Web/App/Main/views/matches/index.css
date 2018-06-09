@@ -1,0 +1,43 @@
+﻿body {
+    font-size: 1rem !important;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.match-result {
+    margin: 5px;
+    width: 3.2rem;
+    text-align: center;
+    border-radius: 0
+}
+
+.match-label {
+    margin-bottom: 0;
+}
+
+.match-spacer {
+    cursor: help;
+    text-align: center;
+}
+
+.match-hometeam, .match-awayteam {
+    white-space: nowrap;
+}
+
+.match-hometeam{
+    text-align: right !important;
+}
+
+.team-name {
+    white-space: nowrap
+}
+.team-name.team-name-hover {
+    letter-spacing: -.4px;
+    font-weight: 700
+}
+
+.table-match td {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}

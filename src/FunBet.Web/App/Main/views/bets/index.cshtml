@@ -10,21 +10,25 @@
             <div class="body table-responsive">
                 <table class="table table-hover table-striped table-match">
                     <tbody>
-                        <tr ng-repeat="item in vm.matches" id="match_{{item.id}}">
+                        <tr ng-repeat="item in vm.betMatches" id="match_{{item.id}}">
                             <td width="15%" class="match-date">{{item.date | momentFormat: 'DD/MM/YYYY hh:mm A'}}</td>
-                            <td class="text-right match-hometeam">
+                            <td width="25%" class="text-right match-hometeam">
                                 <span data-id="team-{{item.homeTeam}}" class="team-name">
                                     <i class="flag-icon flag-icon-{{item.homeTeamIso2}}"></i>
                                     {{item.homeTeamName}}
                                 </span>
                                 <label class="match-label">
-                                    <input id="match-{{item.id}}-result-home" ng-model="item.homeResult" data-type="home" type="text" class="match-result">
+                                    <input ng-disabled="item.finished" id="match-{{item.id}}-result-home" numbers-only ng-model="item.homePredict" data-type="home" type="text" class="match-result">
                                 </label>
                             </td>
-                            <td class="text-center match-spacer">Match {{item.id}}</td>
+                            <td class="text-center match-spacer">
+                                <span ng-if="item.finished">Final score</span>
+                                <br />
+                                <span ng-if="item.finished">({{item.homeResult}} - {{item.awayResult}})</span>
+                            </td>
                             <td>
                                 <label class="match-label">
-                                    <input id="match-{{item.id}}-result-away" ng-model="item.awayResult" data-type="away" type="text" class="match-result">
+                                    <input ng-disabled="item.finished" id="match-{{item.id}}-result-away" numbers-only ng-model="item.awayPredict" data-type="away" type="text" class="match-result">
                                 </label>
                                 <span data-id="team-{{item.awayTeam}}" class="team-name">
                                     <i class="flag-icon flag-icon-{{item.awayTeamIso2}}"></i>
@@ -32,12 +36,13 @@
                                 </span>
                             </td>
                             <td>
-                                <button mat-raised-button ng-click="vm.bet(item)"><i class="material-icons">touch_app</i>Bet</button>
+                                <button ng-if="!item.finished" mat-raised-button ng-click="vm.bet(item)"><i class="material-icons">touch_app</i>Bet</button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+            
         </div>
     </div>
 </div>
