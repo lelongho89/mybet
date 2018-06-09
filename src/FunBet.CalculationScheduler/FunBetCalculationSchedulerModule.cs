@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace FunBet.CalculationScheduler
 {
-    [DependsOn(typeof(FunBetDataModule))]
+    [DependsOn(typeof(FunBetCoreModule), typeof(FunBetDataModule))]
     public class FunBetCalculationSchedulerModule : AbpModule
     {
         public override void PreInitialize()
         {
-            Database.SetInitializer<FunBetDbContext>(null);
+            //Database.SetInitializer<FunBetDbContext>(null);
         }
 
         public override void Initialize()

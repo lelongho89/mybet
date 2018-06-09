@@ -1,6 +1,8 @@
 ﻿using Abp.Dependency;
 using Abp.Domain.Repositories;
+using Abp.Domain.Uow;
 using FunBet.Bets;
+using FunBet.CalculationRules;
 using FunBet.CalculationScheduler;
 using FunBet.Matches;
 using FunBet.Standings;
@@ -34,15 +36,22 @@ namespace FunBet.CalculationScheduler
             _betRepository = betRepository;
             _matchRepository = matchRepository;
             _scoreManager = scoreManager;
+
+            // Add Rules for ScoreManager
+            _scoreManager.AddRule(new MatchExactlyCalculationRule());
+            _scoreManager.AddRule(new MatchResultCalculationRule());
+            _scoreManager.AddRule(new MatchAnyScoreCalculationRule());
         }
 
-        public void Run(long exactPredictorId)
+        [UnitOfWork]
+        public virtual void Run(long exactPredictorId)
         {
             Log.Write("Calculation scheduler started...");
 
             try
             {
                 // Get all bets which have not processed yet.
+
                 var finishedMatchBets = from bet in _betRepository.GetAll().Where(x => !x.IsProcessed)
                                         join match in _matchRepository.GetAll().Where(x => x.Finished) on bet.MatchId equals match.Id
                                         select new BetMatch
@@ -56,7 +65,7 @@ namespace FunBet.CalculationScheduler
                                             AwayResult = match.AwayResult
                                         };
 
-                var betsByPredictor = finishedMatchBets.GroupBy(x => x.PredictorId);
+                var betsByPredictor = finishedMatchBets.GroupBy(x => x.PredictorId).ToList();
 
                 foreach (var bbp in betsByPredictor)
                 {
