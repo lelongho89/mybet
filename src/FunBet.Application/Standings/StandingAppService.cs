@@ -27,8 +27,12 @@ namespace FunBet.Standings
 
         public GetPositionOutput GetPosition(GetPositionInput input)
         {
-            var standings = GetAll(new GetAllInput());
-            return new GetPositionOutput();
+            var standing = GetAll(new GetAllInput());
+            var position = Array.FindIndex(standing.Items.ToArray(), x => x.PredictorId == AbpSession.UserId.Value) + 1;
+            return new GetPositionOutput()
+            {
+                Position = position
+            };
         }
     }
 }

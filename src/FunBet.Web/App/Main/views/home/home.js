@@ -14,7 +14,7 @@
 
             function getPosition(){
                 standingService.getPosition({}).then(function(result){
-                    vm.position = result.position;
+                    vm.position = result.data.position;
                 });
             }
 
