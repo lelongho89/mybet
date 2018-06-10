@@ -13,5 +13,6 @@ namespace FunBet.Matches
     public interface IMatchAppService : IApplicationService
     {
         GetAllOutput GetAll(GetAllInput input);
+        ListResultDto<MatchDto> GetNextMatches(GetNextMatchesInput input);
     }
 }

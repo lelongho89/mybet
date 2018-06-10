@@ -81,8 +81,8 @@ namespace FunBet.Matches
         {
             // Check if a valid bet
             // Cannot bet a past match
-            // Cannot bet after 80'
-            if (Clock.Now > Date.AddMinutes(80))
+            // Cannot bet after 75' (45' + 15' (timeout) + 30')
+            if (Finished || Clock.Now > Date.AddMinutes(90))
             {
                 return false;
             }

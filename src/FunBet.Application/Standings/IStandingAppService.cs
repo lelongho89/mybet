@@ -7,5 +7,6 @@ namespace FunBet.Standings
     public interface IStandingAppService : IApplicationService
     {
         ListResultDto<StandingDto> GetAll(GetAllInput input);
+        GetPositionOutput GetPosition(GetPositionInput input);
     }
 }

@@ -34,7 +34,7 @@ namespace FunBet.Matches
 
         public GetAllOutput GetAll(GetAllInput input)
         {
-            var teams = this._teamRepository.GetAllList();
+            var teams = this._teamRepository.GetAllList(); // TODO: get from Cache
             var matches = this._matchRepository.GetAll()
                                             .OrderBy(x => x.Date)
                                             .MapTo<List<MatchDto>>();
@@ -65,6 +65,35 @@ namespace FunBet.Matches
                 Matches = matches,
                 Groups = groups
             };
+        }
+
+        /// <summary>
+        /// Get next 6 matches from today.
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public ListResultDto<MatchDto> GetNextMatches(GetNextMatchesInput input)
+        {
+            var matches = this._matchRepository.GetAll()
+                                            .Where(x => !x.Finished && x.Date > Clock.Now)
+                                            .OrderBy(x => x.Date)
+                                            .Take(input.MaxResultCount)
+                                            .MapTo<List<MatchDto>>();
+
+            var teams = this._teamRepository.GetAllList(); // TODO: get from Cache
+
+            matches.ForEach(x =>
+            {
+                var homeTeam = teams.FirstOrDefault(t => t.Id == x.HomeTeam);
+                x.HomeTeamName = homeTeam.Name;
+                x.HomeTeamIso2 = homeTeam.Iso2;
+
+                var awayTeam = teams.FirstOrDefault(t => t.Id == x.AwayTeam);
+                x.AwayTeamName = awayTeam.Name;
+                x.AwayTeamIso2 = awayTeam.Iso2;
+            });
+
+            return new ListResultDto<MatchDto>(matches);
         }
     }
 }

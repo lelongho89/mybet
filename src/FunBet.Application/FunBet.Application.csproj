@@ -190,6 +190,7 @@
     <Compile Include="Bets\Dto\BetMatchDto.cs" />
     <Compile Include="Bets\Dto\GetMatchesToBetInput.cs" />
     <Compile Include="Matches\Dto\GetAllOutput.cs" />
+    <Compile Include="Matches\Dto\GetNextMatchesInput.cs" />
     <Compile Include="Matches\Dto\GroupDto.cs" />
     <Compile Include="Matches\Dto\MatchDisplayType.cs" />
     <Compile Include="Matches\MatchAppService.cs" />
@@ -222,6 +223,8 @@
     <Compile Include="Roles\Dto\RoleDto.cs" />
     <Compile Include="Roles\IRoleAppService.cs" />
     <Compile Include="Standings\Dto\GetAllInput.cs" />
+    <Compile Include="Standings\Dto\GetPositionInput.cs" />
+    <Compile Include="Standings\Dto\GetPositionOutput.cs" />
     <Compile Include="Standings\Dto\StandingDto.cs" />
     <Compile Include="Standings\IStandingAppService.cs" />
     <Compile Include="Standings\StandingAppService.cs" />

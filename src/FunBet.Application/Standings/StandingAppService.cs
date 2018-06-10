@@ -24,5 +24,11 @@ namespace FunBet.Standings
             var data = _standingRepository.GetAll().OrderByDescending(x => x.Points).MapTo<List<StandingDto>>();
             return new ListResultDto<StandingDto>(data);
         }
+
+        public GetPositionOutput GetPosition(GetPositionInput input)
+        {
+            var standings = GetAll(new GetAllInput());
+            return new GetPositionOutput();
+        }
     }
 }
