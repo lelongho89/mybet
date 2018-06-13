@@ -70,7 +70,18 @@ namespace FunBet.Bets
 
         public void Bet(BetInput input)
         {
-            var betModel = input.Id.HasValue ? this._betRepository.Get(input.Id.Value) : input.MapTo<Bet>();
+            Bet betModel = new Bets.Bet();
+
+            if (input.Id.HasValue)
+            {
+                betModel = this._betRepository.Get(input.Id.Value);
+                input.MapTo(betModel);
+            }
+            else
+            {
+                input.MapTo<Bet>();
+            }
+
             betModel.PredictorId = AbpSession.UserId.Value;
             betModel.PredictTime = Clock.Now;
             var match = _matchRepository.Get(input.MatchId);

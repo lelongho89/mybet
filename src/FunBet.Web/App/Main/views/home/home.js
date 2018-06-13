@@ -18,6 +18,19 @@
                 });
             }
 
+            vm.standings = [];
+
+            function getStandings() {
+                standingService.getAll({}).then(function (result) {
+                    vm.standings = result.data.items;
+                });
+            }
+
+            vm.refresh = function () {
+                getStandings();
+            };
+
+            getStandings();
             getNextMatches();
             getPosition();
         }

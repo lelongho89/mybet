@@ -37,6 +37,7 @@
                 }
 
                 betService.bet({
+                    id: match.betId,
                     matchId: match.id,
                     homePredict: match.homePredict,
                     awayPredict: match.awayPredict
