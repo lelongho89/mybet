@@ -1,1 +1,2 @@
 abc
+search doc1
